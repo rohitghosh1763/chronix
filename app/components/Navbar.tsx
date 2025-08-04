@@ -1,7 +1,7 @@
 "use client";
-
 import React, { useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
+import { AuthButton } from "./AuthButton";
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -52,12 +52,7 @@ const Navbar = () => {
                     {/* Right Side - Desktop */}
                     <div className="hidden lg:flex items-center space-x-3">
                         <ThemeToggle />
-                        <a
-                            href="#"
-                            className="text-[#2e2e2e] dark:text-[#f3f4f6] hover:text-[#2563eb] dark:hover:text-[#3b82f6] text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#2563eb] dark:focus:ring-[#3b82f6] focus:ring-opacity-50 rounded-lg px-3 py-2 hover:bg-[#f3f4f6] dark:hover:bg-[#334155]/50"
-                        >
-                            Login
-                        </a>
+                        <AuthButton />
                         <button className="bg-[#2563eb] dark:bg-[#3b82f6] hover:bg-[#1d4ed8] dark:hover:bg-[#2563eb] focus:bg-[#1d4ed8] dark:focus:bg-[#2563eb] focus:outline-none focus:ring-2 focus:ring-[#2563eb] dark:focus:ring-[#3b82f6] focus:ring-opacity-50 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 hover:translate-y-[-1px]">
                             Start Testing
                         </button>
@@ -140,13 +135,7 @@ const Navbar = () => {
 
                             <div className="border-t border-[#e0e0e0] dark:border-[#334155] my-3"></div>
 
-                            <a
-                                href="#"
-                                className="text-[#2e2e2e] dark:text-[#f3f4f6] hover:text-[#2563eb] dark:hover:text-[#3b82f6] text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#2563eb] dark:focus:ring-[#3b82f6] focus:ring-opacity-50 rounded-xl px-4 py-3 text-center hover:bg-[#f3f4f6] dark:hover:bg-[#334155]/50"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                Login
-                            </a>
+                            <AuthButton/>
                             <button
                                 className="bg-[#2563eb] dark:bg-[#3b82f6] hover:bg-[#1d4ed8] dark:hover:bg-[#2563eb] focus:bg-[#1d4ed8] dark:focus:bg-[#2563eb] focus:outline-none focus:ring-2 focus:ring-[#2563eb] dark:focus:ring-[#3b82f6] focus:ring-opacity-50 text-white px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] mt-2"
                                 onClick={() => setIsMobileMenuOpen(false)}

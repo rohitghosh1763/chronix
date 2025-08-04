@@ -4,6 +4,7 @@ import { FloatingDock } from "@/components/ui/floating-dock";
 import {
     IconBrandFacebook,
     IconBrandGithub,
+    IconBrandInstagram,
     IconBrandX,
     IconExchange,
     IconHome,
@@ -21,14 +22,21 @@ const Dock = () => {
         },
 
         {
-            title: "Follow Me on Facebook",
+            title: "Follow me on Facebook",
             icon: (
                 <IconBrandFacebook className="h-full w-full text-neutral-500 dark:text-neutral-300" />
             ),
             href: "https://www.facebook.com/rgrg1234/",
         },
         {
-            title: "Follow Me on GitHub",
+            title: "Follow me on Instagram",
+            icon: (
+                <IconBrandInstagram className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+            ),
+            href: "https://www.instagram.com/rohitghosh12/",
+        },
+        {
+            title: "Follow me on GitHub",
             icon: (
                 <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
             ),
@@ -36,11 +44,8 @@ const Dock = () => {
         },
     ];
     return (
-        <div className="fixed bottom-6 right-6 md:bottom-auto md:right-auto md:top-0 md:left-0 md:w-full md:h-[85rem] md:flex md:items-center md:justify-center">
-            <FloatingDock
-                mobileClassName="translate-y-0" // remove demo offset
-                items={links}
-            />
+        <div className="fixed bottom-6 right-6 sm:right-6 md:right-1/2 md:translate-x-1/2 md:left-auto transform z-50">
+            <FloatingDock items={links} />
         </div>
     );
 };

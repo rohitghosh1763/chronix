@@ -11,7 +11,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="fixed top-0 left-0 right-0 z-50 p-2 sm:p-4">
+        <div className="fixed top-0 left-0 right-0 z-10 p-2 sm:p-4">
             <nav className="max-w-7xl mx-auto bg-[#ffffff]/95 dark:bg-[#1e293b]/95 backdrop-blur-lg border border-[#e0e0e0] dark:border-[#334155] rounded-xl px-4 sm:px-6 py-3 shadow-xl shadow-black/5 dark:shadow-black/20">
                 <div className="flex items-center justify-between">
                     {/* Left Navigation Links - Desktop */}
@@ -54,16 +54,17 @@ const Navbar = () => {
                         <ThemeToggle />
                         <AuthButton />
                         <button className="bg-[#2563eb] dark:bg-[#3b82f6] hover:bg-[#1d4ed8] dark:hover:bg-[#2563eb] focus:bg-[#1d4ed8] dark:focus:bg-[#2563eb] focus:outline-none focus:ring-2 focus:ring-[#2563eb] dark:focus:ring-[#3b82f6] focus:ring-opacity-50 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 hover:translate-y-[-1px]">
-                            Start Testing
+                            Track Time
                         </button>
                     </div>
 
-                    {/* Mobile Menu - Theme Toggle and Hamburger */}
+                    {/* Mobile Menu - Theme Toggle and Hamburger - Hidden when sidebar is present */}
                     <div className="lg:hidden flex items-center space-x-3">
                         <ThemeToggle />
+                        {/* Hide mobile hamburger when sidebar is being used */}
                         <button
                             onClick={toggleMobileMenu}
-                            className="text-[#2e2e2e] dark:text-[#f3f4f6] hover:text-[#2563eb] dark:hover:text-[#3b82f6] p-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] dark:focus:ring-[#3b82f6] focus:ring-opacity-50 transition-all duration-200 hover:bg-[#f3f4f6] dark:hover:bg-[#334155]/50"
+                            className="hidden text-[#2e2e2e] dark:text-[#f3f4f6] hover:text-[#2563eb] dark:hover:text-[#3b82f6] p-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] dark:focus:ring-[#3b82f6] focus:ring-opacity-50 transition-all duration-200 hover:bg-[#f3f4f6] dark:hover:bg-[#334155]/50"
                             aria-label="Toggle mobile menu"
                         >
                             <svg
@@ -135,7 +136,7 @@ const Navbar = () => {
 
                             <div className="border-t border-[#e0e0e0] dark:border-[#334155] my-3"></div>
 
-                            <AuthButton/>
+                            <AuthButton />
                             <button
                                 className="bg-[#2563eb] dark:bg-[#3b82f6] hover:bg-[#1d4ed8] dark:hover:bg-[#2563eb] focus:bg-[#1d4ed8] dark:focus:bg-[#2563eb] focus:outline-none focus:ring-2 focus:ring-[#2563eb] dark:focus:ring-[#3b82f6] focus:ring-opacity-50 text-white px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] mt-2"
                                 onClick={() => setIsMobileMenuOpen(false)}

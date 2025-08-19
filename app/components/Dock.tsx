@@ -44,7 +44,7 @@ const Dock = () => {
         },
     ];
     return (
-        <div className="fixed bottom-6 right-6 sm:right-6 md:right-1/2 md:translate-x-1/2 md:left-auto transform z-50">
+        <div className="fixed bottom-6 right-6 z-50">
             <FloatingDock items={links} />
         </div>
     );

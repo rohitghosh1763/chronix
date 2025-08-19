@@ -3,6 +3,9 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { AuthProvider } from "./contexts/AuthContext";
+import Navbar from "./components/Navbar";
+import Dock from "./components/Dock";
+import { SidebarDemo } from "./components/SidebarDemo";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -36,7 +39,15 @@ export default function RootLayout({
                 className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased font-['Helvetica',Arial,sans-serif]`}
             >
                 <ThemeProvider>
-                    <AuthProvider>{children}</AuthProvider>
+                    <AuthProvider>
+                        <SidebarDemo>
+                            <div className="min-h-screen bg-[#f9f9f9] dark:bg-[#0f172a]">
+                                <Navbar />
+                                {children}
+                                <Dock />
+                            </div>
+                        </SidebarDemo>
+                    </AuthProvider>
                 </ThemeProvider>
             </body>
         </html>

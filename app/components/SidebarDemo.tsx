@@ -24,7 +24,7 @@ export function SidebarDemo({ children }: { children: React.ReactNode }) {
 
     const links = [
         {
-            label: "Dashboard",
+            label: "Home",
             href: "#",
             icon: (
                 <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
@@ -32,39 +32,39 @@ export function SidebarDemo({ children }: { children: React.ReactNode }) {
         },
         {
             label: "Time Tracking",
-            href: "#",
+            href: "/routes/punch",
             icon: (
                 <IconClockHour4 className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
         },
-        {
-            label: "Analytics",
-            href: "#",
-            icon: (
-                <IconCalendarStats className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-            ),
-        },
-        {
-            label: "Goals",
-            href: "#",
-            icon: (
-                <IconTarget className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-            ),
-        },
-        {
-            label: "Profile",
-            href: "#",
-            icon: (
-                <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-            ),
-        },
-        {
-            label: "Settings",
-            href: "#",
-            icon: (
-                <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-            ),
-        },
+        // {
+        //     label: "Analytics",
+        //     href: "#",
+        //     icon: (
+        //         <IconCalendarStats className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        //     ),
+        // },
+        // {
+        //     label: "Goals",
+        //     href: "#",
+        //     icon: (
+        //         <IconTarget className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        //     ),
+        // },
+        // {
+        //     label: "Profile",
+        //     href: "#",
+        //     icon: (
+        //         <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        //     ),
+        // },
+        // {
+        //     label: "Settings",
+        //     href: "#",
+        //     icon: (
+        //         <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        //     ),
+        // },
     ];
 
     return (
@@ -109,9 +109,9 @@ export function SidebarDemo({ children }: { children: React.ReactNode }) {
             </div>
 
             {/* Mobile Sidebar Toggle Button */}
-            <div className="md:hidden fixed top-6 left-6 z-[90] bg-white dark:bg-neutral-800 rounded-lg shadow-xl border border-neutral-200 dark:border-neutral-700 p-3">
+            <div className="md:hidden fixed top-5 left-6 z-[90] bg-white dark:bg-neutral-800 rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-700 p-2.5">
                 <IconMenu2
-                    className="text-neutral-800 dark:text-neutral-200 w-5 h-5 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="text-neutral-800 dark:text-neutral-200 w-5 h-5 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
                     onClick={() => setOpen(true)}
                 />
             </div>
@@ -144,10 +144,12 @@ export function SidebarDemo({ children }: { children: React.ReactNode }) {
                             {/* Header */}
                             <div className="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-700">
                                 <Logo />
-                                <IconX
-                                    className="text-neutral-800 dark:text-neutral-200 w-6 h-6 cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded p-1 transition-colors"
+                                <button
                                     onClick={() => setOpen(false)}
-                                />
+                                    className="flex items-center justify-center w-8 h-8 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-lg transition-colors duration-200"
+                                >
+                                    <IconX className="w-5 h-5" />
+                                </button>
                             </div>
 
                             {/* Content */}
@@ -156,10 +158,12 @@ export function SidebarDemo({ children }: { children: React.ReactNode }) {
                                     {links.map((link, idx) => (
                                         <div
                                             key={idx}
-                                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer transition-colors"
+                                            className="flex items-center gap-4 p-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer transition-colors"
                                         >
-                                            {link.icon}
-                                            <span className="text-neutral-700 dark:text-neutral-200 text-sm">
+                                            <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                                                {link.icon}
+                                            </div>
+                                            <span className="text-neutral-700 dark:text-neutral-200 text-sm font-medium">
                                                 {link.label}
                                             </span>
                                         </div>
@@ -168,26 +172,31 @@ export function SidebarDemo({ children }: { children: React.ReactNode }) {
 
                                 {/* User Info */}
                                 <div className="border-t border-neutral-200 dark:border-neutral-700 pt-4">
-                                    <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer transition-colors">
-                                        <Image
-                                            src={
-                                                user?.photoURL ||
-                                                "/images/userlogo.png"
-                                            }
-                                            className="h-8 w-8 flex-shrink-0 rounded-full object-cover"
-                                            width={50}
-                                            height={50}
-                                            alt="Avatar"
-                                        />
+                                    <div className="flex items-center gap-4 p-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer transition-colors">
+                                        <div className="flex-shrink-0">
+                                            <Image
+                                                src={
+                                                    user?.photoURL ||
+                                                    "/images/userlogo.png"
+                                                }
+                                                className="h-8 w-8 flex-shrink-0 rounded-full object-cover"
+                                                width={50}
+                                                height={50}
+                                                alt="Avatar"
+                                            />
+                                        </div>
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-sm text-neutral-700 dark:text-neutral-200 truncate">
+                                            <p className="text-sm text-neutral-700 dark:text-neutral-200 font-medium truncate">
                                                 {user?.displayName ||
                                                     user?.email ||
                                                     "User"}
                                             </p>
-                                            <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                                                {user?.email}
-                                            </p>
+                                            {user?.email &&
+                                                user?.displayName && (
+                                                    <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate">
+                                                        {user.email}
+                                                    </p>
+                                                )}
                                         </div>
                                     </div>
                                 </div>

@@ -81,7 +81,7 @@ const Analytics = () => {
             console.log("Found sessions:", querySnapshot.size);
 
             const userSessions: Session[] = [];
-            querySnapshot.forEach((doc: any) => {
+            querySnapshot.forEach((doc: import("firebase/firestore").QueryDocumentSnapshot) => {
                 const sessionData = doc.data();
                 // console.log("Session data:", sessionData);
                 userSessions.push({
@@ -110,7 +110,8 @@ const Analytics = () => {
 
     useEffect(() => {
         loadSessions();
-    }, [user]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user, loadSessions]);
 
     const calculateStats = (sessionList: Session[]) => {
         console.log("Calculating stats for sessions:", sessionList.length);
@@ -258,7 +259,7 @@ const Analytics = () => {
         }
     };
 
-    const formatDate = (timestamp: any) => {
+    const formatDate = (timestamp: Timestamp) => {
         return timestamp.toDate().toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",
@@ -266,7 +267,7 @@ const Analytics = () => {
         });
     };
 
-    const formatTime = (timestamp: any) => {
+    const formatTime = (timestamp: Timestamp) => {
         return timestamp.toDate().toLocaleTimeString("en-US", {
             hour: "2-digit",
             minute: "2-digit",
@@ -382,7 +383,7 @@ const Analytics = () => {
                             color: "purple",
                             change: `${stats.longestSession}h longest session`,
                         },
-                    ].map((stat, index) => (
+                    ].map((stat) => (
                         <motion.div
                             key={stat.title}
                             className="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-700"
@@ -453,7 +454,7 @@ const Analytics = () => {
                             </div>
                         ) : (
                             <div className="space-y-4">
-                                {sessions.map((session, index) => (
+                                {sessions.map((session) => (
                                     <motion.div
                                         key={session.id}
                                         className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-neutral-50 dark:bg-neutral-700/50 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors"
@@ -461,7 +462,7 @@ const Analytics = () => {
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{
                                             duration: 0.3,
-                                            delay: index * 0.05,
+                                            delay: 0,
                                         }}
                                     >
                                         <div className="flex-1">

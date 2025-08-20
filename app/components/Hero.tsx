@@ -2,6 +2,7 @@
 import { useAuth } from "@/app/contexts/AuthContext";
 import { useSession } from "@/app/contexts/SessionContext";
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -21,13 +22,14 @@ const Hero = () => {
                 {user && (
                     <div className="mb-8">
                         <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/70 dark:bg-neutral-800/70 backdrop-blur-md rounded-full border border-neutral-200 dark:border-neutral-700 shadow-md">
-                            <img
+                            <Image
                                 src={user.photoURL || "/images/userlogo.png"}
                                 alt="Profile"
                                 className="w-9 h-9 rounded-full object-cover"
+                                width={36}
+                                height={36}
                                 onError={(e) => {
-                                    e.currentTarget.src =
-                                        "/images/userlogo.png";
+                                    (e.target as HTMLImageElement).src = "/images/userlogo.png";
                                 }}
                             />
                             <span className="text-neutral-800 dark:text-neutral-200 font-medium text-base">

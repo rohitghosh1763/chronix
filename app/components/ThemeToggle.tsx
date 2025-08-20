@@ -22,19 +22,8 @@ export function ThemeToggle() {
     const isDark = resolvedTheme === "dark";
 
     const toggleTheme = () => {
-        if (buttonRef.current) {
-            // Get button position for ripple origin
-            const rect = buttonRef.current.getBoundingClientRect();
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
-
-            // Pass the target theme (opposite of current)
-            const nextTheme = isDark ? "light" : "dark";
-        }
-
-        console.log("Current theme:", theme, "Resolved theme:", resolvedTheme);
+        // Optionally, you can use buttonRef for ripple effects, but currently not used
         const newTheme = isDark ? "light" : "dark";
-        console.log("Setting theme to:", newTheme);
         setTheme(newTheme);
     };
 

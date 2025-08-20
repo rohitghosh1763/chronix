@@ -84,7 +84,7 @@ const PunchPage = () => {
                 {/* Simple Status Text */}
                 {isPunchedIn && (
                     <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-6">
-                        You're clocked in
+                        You&apos;re clocked in
                     </p>
                 )}
 
@@ -161,7 +161,7 @@ const PunchPage = () => {
                                     : "Punched Out",
                             },
                             {
-                                title: "Today's Hours",
+                                title: "Today&apos;s Hours",
                                 value: getTodaysDuration(),
                             },
                         ].map(({ title, value }) => (

@@ -41,7 +41,7 @@ export const createSession = async (
             startAt,
         };
 
-        console.log("Session data:", sessionData);
+        // console.log("Session data:", sessionData);
 
         const docRef = await addDoc(collection(db, "sessions"), sessionData);
 

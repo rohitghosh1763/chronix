@@ -69,7 +69,7 @@ const Analytics = () => {
         setError(null);
 
         try {
-            console.log("Loading sessions for user:", user.uid);
+            // console.log("Loading sessions for user:", user.uid);
 
             // Get sessions using simple query (no composite index required)
             const q = query(
@@ -83,7 +83,7 @@ const Analytics = () => {
             const userSessions: Session[] = [];
             querySnapshot.forEach((doc: any) => {
                 const sessionData = doc.data();
-                console.log("Session data:", sessionData);
+                // console.log("Session data:", sessionData);
                 userSessions.push({
                     id: doc.id,
                     ...sessionData,
@@ -275,13 +275,6 @@ const Analytics = () => {
     };
 
     const getSessionDuration = (session: Session) => {
-        console.log(
-            "Getting duration for session:",
-            session.id,
-            "durationMinutes:",
-            session.durationMinutes
-        );
-
         if (session.durationMinutes && session.durationMinutes > 0) {
             return formatDuration(session.durationMinutes);
         }

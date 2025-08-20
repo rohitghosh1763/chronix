@@ -37,13 +37,13 @@ export function SidebarDemo({ children }: { children: React.ReactNode }) {
                 <IconClockHour4 className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
         },
-        // {
-        //     label: "Analytics",
-        //     href: "#",
-        //     icon: (
-        //         <IconCalendarStats className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-        //     ),
-        // },
+        {
+            label: "Analytics",
+            href: "/routes/analytics",
+            icon: (
+                <IconCalendarStats className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+            ),
+        },
         // {
         //     label: "Goals",
         //     href: "#",

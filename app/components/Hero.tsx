@@ -1,11 +1,13 @@
 "use client";
 import { useAuth } from "@/app/contexts/AuthContext";
+import { useSession } from "@/app/contexts/SessionContext";
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 const Hero = () => {
     const { user, signInWithGoogle } = useAuth();
+    const { isPunchedIn, currentDuration } = useSession();
     const firstName = user?.displayName?.split(" ")[0] || "there";
 
     return (
@@ -33,7 +35,16 @@ const Hero = () => {
                                 <span className="font-semibold">
                                     {firstName}
                                 </span>{" "}
-                                👋
+                                {isPunchedIn ? (
+                                    <span className="inline-flex items-center gap-1">
+                                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                        <span className="text-green-600 dark:text-green-400 font-mono text-sm">
+                                            {currentDuration}
+                                        </span>
+                                    </span>
+                                ) : (
+                                    "👋"
+                                )}
                             </span>
                         </div>
                     </div>
@@ -56,22 +67,35 @@ const Hero = () => {
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
-                            className="mb-20 inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full text-lg transition-all shadow-lg"
+                            className={`mb-20 inline-flex items-center gap-2 px-8 py-4 font-semibold rounded-full text-lg transition-all shadow-lg ${
+                                isPunchedIn
+                                    ? "bg-green-600 hover:bg-green-700 text-white animate-pulse"
+                                    : "bg-blue-600 hover:bg-blue-700 text-white"
+                            }`}
                         >
-                            Track Time
-                            <svg
-                                className="w-5 h-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M9 5l7 7-7 7"
-                                />
-                            </svg>
+                            {isPunchedIn ? (
+                                <>
+                                    <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
+                                    Clocked In - {currentDuration}
+                                </>
+                            ) : (
+                                <>
+                                    Track Time
+                                    <svg
+                                        className="w-5 h-5"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M9 5l7 7-7 7"
+                                        />
+                                    </svg>
+                                </>
+                            )}
                         </motion.button>
                     </Link>
                 ) : (

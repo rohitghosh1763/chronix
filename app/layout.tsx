@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { AuthProvider } from "./contexts/AuthContext";
+import { SessionProvider } from "./contexts/SessionContext";
 import Navbar from "./components/Navbar";
 import Dock from "./components/Dock";
 import { SidebarDemo } from "./components/SidebarDemo";
@@ -40,13 +41,15 @@ export default function RootLayout({
             >
                 <ThemeProvider>
                     <AuthProvider>
-                        <SidebarDemo>
-                            <div className="min-h-screen bg-[#f9f9f9] dark:bg-[#0f172a]">
-                                <Navbar />
-                                {children}
-                                <Dock />
-                            </div>
-                        </SidebarDemo>
+                        <SessionProvider>
+                            <SidebarDemo>
+                                <div className="min-h-screen bg-[#f9f9f9] dark:bg-[#0f172a]">
+                                    <Navbar />
+                                    {children}
+                                    <Dock />
+                                </div>
+                            </SidebarDemo>
+                        </SessionProvider>
                     </AuthProvider>
                 </ThemeProvider>
             </body>

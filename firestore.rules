@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Users can read/write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Users can create sessions and read/write their own
+    match /sessions/{sessionId} {
+      // Allow reading existing sessions if the user owns them
+      allow read, update, delete: if request.auth != null &&
+        request.auth.uid == resource.data.userId;
+        
+      // Allow creating new sessions if the user ID matches
+      allow create: if request.auth != null &&
+        request.auth.uid == request.resource.data.userId;
+    }
+
+    // Allow connection testing (for debug purposes - remove in production)
+    match /connectionTest/{testId} {
+      allow create: if request.auth != null;
+    }
+  }
+}

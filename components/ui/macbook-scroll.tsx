@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { MotionValue, motion, useScroll, useTransform } from "motion/react";
 import { cn } from "@/lib/utils";
 import {
@@ -172,11 +173,19 @@ export const Lid = ({
                 className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
             >
                 <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-                <img
-                    src={src as string}
-                    alt="aceternity logo"
-                    className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
-                />
+                {src && (
+                    <Image
+                        src={src}
+                        alt="aceternity logo"
+                        fill
+                        className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
+                        style={{
+                            objectFit: "cover",
+                            objectPosition: "left top",
+                        }}
+                        priority
+                    />
+                )}
             </motion.div>
         </div>
     );

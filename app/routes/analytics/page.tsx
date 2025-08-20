@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/app/contexts/AuthContext";
 import { useSession } from "@/app/contexts/SessionContext";
@@ -62,7 +62,7 @@ const Analytics = () => {
     });
 
     // Load user sessions
-    const loadSessions = async () => {
+    const loadSessions = useCallback(async () => {
         if (!user) return;
 
         setIsLoading(true);
@@ -108,11 +108,10 @@ const Analytics = () => {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [user]);
 
     useEffect(() => {
         loadSessions();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user, loadSessions]);
 
     const calculateStats = (sessionList: Session[]) => {

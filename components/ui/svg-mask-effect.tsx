@@ -29,19 +29,14 @@ export const MaskContainer = ({
     };
 
     useEffect(() => {
-        if (!containerRef.current) return;
-        containerRef.current.addEventListener("mousemove", updateMousePosition);
+        const ref = containerRef.current;
+        if (!ref) return;
+        ref.addEventListener("mousemove", updateMousePosition);
         return () => {
-            if (containerRef.current) {
-                containerRef.current.removeEventListener(
-                    "mousemove",
-                    updateMousePosition
-                );
-            }
+            ref.removeEventListener("mousemove", updateMousePosition);
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [containerRef.current]);
-    let maskSize = isHovered ? revealSize : size;
+    }, []);
+    const maskSize = isHovered ? revealSize : size;
     const maskX = mousePosition.x !== null ? mousePosition.x - maskSize / 2 : 0;
     const maskY = mousePosition.y !== null ? mousePosition.y - maskSize / 2 : 0;
 

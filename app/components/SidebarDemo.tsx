@@ -4,18 +4,14 @@ import React, { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
 import {
     IconBrandTabler,
-    IconSettings,
-    IconUserBolt,
     IconCalendarStats,
     IconClockHour4,
-    IconTarget,
     IconMenu2,
     IconX,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import { cn } from "@/app/lib/utils";
 import { useAuth } from "@/app/contexts/AuthContext";
 
 export function SidebarDemo({ children }: { children: React.ReactNode }) {

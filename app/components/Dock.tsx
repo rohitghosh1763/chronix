@@ -5,11 +5,7 @@ import {
     IconBrandFacebook,
     IconBrandGithub,
     IconBrandInstagram,
-    IconBrandX,
-    IconExchange,
     IconHome,
-    IconNewSection,
-    IconTerminal2,
 } from "@tabler/icons-react";
 const Dock = () => {
     const links = [

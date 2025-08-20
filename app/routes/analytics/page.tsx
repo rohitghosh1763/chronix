@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/app/contexts/AuthContext";
 import { useSession } from "@/app/contexts/SessionContext";
-import { getUserSessions, Session, formatDuration } from "@/app/lib/firestore";
+import { Session, formatDuration } from "@/app/lib/firestore";
 import {
     collection,
     query,

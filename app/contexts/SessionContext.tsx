@@ -17,7 +17,6 @@ import {
     checkAndHandleAutoPunchOut,
     formatLiveDuration,
 } from "@/lib/firestore";
-import { Timestamp } from "firebase/firestore";
 
 interface SessionContextType {
     currentSession: Session | null;

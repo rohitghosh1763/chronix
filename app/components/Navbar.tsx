@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { AuthButton } from "./AuthButton";
 import { useAuth } from "@/contexts/AuthContext";
-import { sign } from "crypto";
 
 const Navbar = () => {
     const { user, signInWithGoogle } = useAuth();

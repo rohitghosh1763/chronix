@@ -121,13 +121,20 @@ function IconContainer({
     const ref = useRef<HTMLDivElement>(null);
 
     const distance = useTransform(mouseX, (val) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+        const bounds = ref.current?.getBoundingClientRect() ?? {
+            x: 0,
+            width: 0,
+        };
 
         return val - bounds.x - bounds.width / 2;
     });
 
     const widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
-    const heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+    const heightTransform = useTransform(
+        distance,
+        [-150, 0, 150],
+        [40, 80, 40]
+    );
 
     const widthTransformIcon = useTransform(
         distance,

@@ -81,14 +81,16 @@ const Analytics = () => {
             console.log("Found sessions:", querySnapshot.size);
 
             const userSessions: Session[] = [];
-            querySnapshot.forEach((doc: import("firebase/firestore").QueryDocumentSnapshot) => {
-                const sessionData = doc.data();
-                // console.log("Session data:", sessionData);
-                userSessions.push({
-                    id: doc.id,
-                    ...sessionData,
-                } as Session);
-            });
+            querySnapshot.forEach(
+                (doc: import("firebase/firestore").QueryDocumentSnapshot) => {
+                    const sessionData = doc.data();
+                    // console.log("Session data:", sessionData);
+                    userSessions.push({
+                        id: doc.id,
+                        ...sessionData,
+                    } as Session);
+                }
+            );
 
             // Sort sessions by startAt in JavaScript (newest first)
             userSessions.sort(

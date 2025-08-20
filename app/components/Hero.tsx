@@ -29,7 +29,8 @@ const Hero = () => {
                                 width={36}
                                 height={36}
                                 onError={(e) => {
-                                    (e.target as HTMLImageElement).src = "/images/userlogo.png";
+                                    (e.target as HTMLImageElement).src =
+                                        "/images/userlogo.png";
                                 }}
                             />
                             <span className="text-neutral-800 dark:text-neutral-200 font-medium text-base">

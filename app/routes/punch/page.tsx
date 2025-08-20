@@ -222,8 +222,6 @@ const PunchPage = () => {
                     </motion.div>
                 )}
             </motion.div>
-
-            
         </div>
     );
 };
